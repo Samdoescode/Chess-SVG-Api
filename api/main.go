@@ -1,6 +1,6 @@
 package main
 
-import "chess/api/api"
+import "chess/api/server"
 
 func main() {
 	server.SetupAndListen()
