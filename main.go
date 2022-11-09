@@ -41,7 +41,7 @@ func main() {
 
 	
 
-	router.Listen("0.0.0.0:$PORT")
+	router.Listen("0.0.0.0:8080")
 }
 
 func createSvg(c *fiber.Ctx) error {
