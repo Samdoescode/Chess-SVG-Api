@@ -28,7 +28,7 @@ func main() {
 	router := fiber.New()
 
 	router.Use("/", filesystem.New(filesystem.Config{
-        Root: rice.MustFindBox("frontend/build/").HTTPBox(),
+        Root: rice.MustFindBox("build").HTTPBox(),
     }))
 
 	router.Use(cors.New(cors.Config{
@@ -38,7 +38,7 @@ func main() {
 
 	router.Get("/api", createSvg)
 	router.Post("/api/adv", avdCreateSvg)
-	router.Static("/public", "./public")
+
 	
 
 	router.Listen(":8080")
@@ -56,12 +56,12 @@ func createSvg(c *fiber.Ctx) error {
 	name := strings.ReplaceAll(fen.Fen, "/", "")
 
 	// check if in system + if in system send it
-	if _, err := os.Stat("frontend/images/" + name); err == nil {
-		return c.SendFile("frontend/images/" + name)
+	if _, err := os.Stat("build/images/" + name); err == nil {
+		return c.SendFile("build/images/" + name)
 	}
 
 	// create a file
-	f, err := os.Create("frontend/images/" + name + ".svg")
+	f, err := os.Create("build/images/" + name + ".svg")
 	if err != nil {
 		c.SendString("Couldn't Create the File" + err.Error())
 	}
@@ -78,7 +78,7 @@ func createSvg(c *fiber.Ctx) error {
 		return c.SendString("We could not complete the SVG create Process" + err.Error())
 	}
 
-	return c.SendFile("frontend/images/" + name + ".svg")
+	return c.SendFile("build/images/" + name + ".svg")
 
 }
 
@@ -96,12 +96,12 @@ func avdCreateSvg(c *fiber.Ctx)error{
 	name := strings.ReplaceAll(boardReq.Fen, "/", "")
 
 	// check if in system + if in system send it
-	if _, err := os.Stat("frontend/images/" + name); err == nil {
-		return c.SendFile("frontend/images/" + name)
+	if _, err := os.Stat("build/images/" + name); err == nil {
+		return c.SendFile("build/images/" + name)
 	}
 
 	// create a file
-	f, err := os.Create("frontend/images/" + name + ".svg")
+	f, err := os.Create("build/images/" + name + ".svg")
 	if err != nil {
 		c.SendString("Couldn't Create the File" + err.Error())
 	}
@@ -120,6 +120,6 @@ func avdCreateSvg(c *fiber.Ctx)error{
 		return c.SendString("We could not complete the SVG create Process" + err.Error())
 	}
 
-	return c.SendFile("frontend/images/" + name + ".svg")
+	return c.SendFile("build/images/" + name + ".svg")
 
 }

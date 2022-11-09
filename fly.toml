@@ -12,6 +12,9 @@ processes = []
 [env]
   PORT = "8080"
 
+[build.args]
+  BP_KEEP_FILES = "build/*/**"
+
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
@@ -41,10 +44,6 @@ processes = []
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
-
-[mounts]
-source="frontend"
-destination="/frontend"
 
 [deploy]
   strategy = "rolling"
