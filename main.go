@@ -56,12 +56,12 @@ func createSvg(c *fiber.Ctx) error {
 	name := strings.ReplaceAll(fen.Fen, "/", "")
 
 	// check if in system + if in system send it
-	if _, err := os.Stat("images/" + name); err == nil {
-		return c.SendFile("images/" + name)
+	if _, err := os.Stat("frontend/images/" + name); err == nil {
+		return c.SendFile("frontend/images/" + name)
 	}
 
 	// create a file
-	f, err := os.Create("images/" + name + ".svg")
+	f, err := os.Create("frontend/images/" + name + ".svg")
 	if err != nil {
 		c.SendString("Couldn't Create the File" + err.Error())
 	}
@@ -78,7 +78,7 @@ func createSvg(c *fiber.Ctx) error {
 		return c.SendString("We could not complete the SVG create Process" + err.Error())
 	}
 
-	return c.SendFile("images/" + name + ".svg")
+	return c.SendFile("frontend/images/" + name + ".svg")
 
 }
 
@@ -96,12 +96,12 @@ func avdCreateSvg(c *fiber.Ctx)error{
 	name := strings.ReplaceAll(boardReq.Fen, "/", "")
 
 	// check if in system + if in system send it
-	if _, err := os.Stat("images/" + name); err == nil {
-		return c.SendFile("images/" + name)
+	if _, err := os.Stat("frontend/images/" + name); err == nil {
+		return c.SendFile("frontend/images/" + name)
 	}
 
 	// create a file
-	f, err := os.Create("images/" + name + ".svg")
+	f, err := os.Create("frontend/images/" + name + ".svg")
 	if err != nil {
 		c.SendString("Couldn't Create the File" + err.Error())
 	}
@@ -120,6 +120,6 @@ func avdCreateSvg(c *fiber.Ctx)error{
 		return c.SendString("We could not complete the SVG create Process" + err.Error())
 	}
 
-	return c.SendFile("images/" + name + ".svg")
+	return c.SendFile("frontend/images/" + name + ".svg")
 
 }
