@@ -8,10 +8,8 @@ require (
 )
 
 require (
-	github.com/GeertJohan/go.rice v1.0.2
 	github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/daaku/go.zipexe v1.0.1 // indirect
 	github.com/klauspost/compress v1.15.12 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect

@@ -8,8 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/notnil/chess"
 	"github.com/notnil/chess/image"
-	"github.com/GeertJohan/go.rice"
-	"github.com/gofiber/fiber/v2/middleware/filesystem"
+	
 )
 
 
@@ -27,9 +26,7 @@ func main() {
 	
 	router := fiber.New()
 
-	router.Use("/", filesystem.New(filesystem.Config{
-        Root: rice.MustFindBox("build").HTTPBox(),
-    }))
+	router.Static("/", "./build")
 
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
